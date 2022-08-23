@@ -41,7 +41,7 @@ export default {
   },
   created(){
     this.scrollListen();
-    scroll()
+    console.log(scroll())
   }
 }
 </script>
