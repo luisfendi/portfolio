@@ -42,6 +42,7 @@ export default {
       })
     },
     activeBlock(){
+      this.active = 'home'
       window.addEventListener('scroll', () => {
         this.active = scroll()
       })
