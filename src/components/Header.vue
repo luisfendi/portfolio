@@ -2,7 +2,7 @@
   <div class="container">
     <div class="header">
       <div class="header-logo">
-        <h3>LOGO</h3>
+        <h3>LOGO {{active}}</h3>
       </div>
       <div class="header-burger">
         <input type="checkbox" v-model="burger" id="burger">
@@ -12,7 +12,9 @@
       </div>
       <div :class="{'header-list': true, open: !burger}">
         <ul>
-          <li v-for="(item, i) in nav" :key="i"><a :href="`#${item}`">{{item}}</a></li>
+          <li v-for="(item, i) in nav" :key="i" :class="{active: active == item}">
+            <a :href="`#${item}`">{{item}}</a>
+          </li>
         </ul>
       </div>
     </div>
@@ -28,6 +30,7 @@ export default {
     return{
       nav: ['home', 'about', 'experience', 'work', 'contact'],
       burger: false,
+      active: ' '
     }
   },
   methods: {
@@ -37,11 +40,26 @@ export default {
           this.burger = 0;
         }
       })
+    },
+    activeBlock(){
+      window.addEventListener('scroll', () => {
+        this.active = scroll()
+      })
+    }
+  },
+  watch: {
+    active(n){
+      //remove class from unactive blocks
+      Array.from(document.querySelectorAll('.container'))
+        .forEach(el => el.classList.remove('active'));
+      
+      //add class to current block
+      document.querySelector(`#${n}`).classList.add('active');
     }
   },
   created(){
     this.scrollListen();
-    console.log(scroll())
+    this.activeBlock()
   }
 }
 </script>
@@ -92,6 +110,11 @@ export default {
           a{
             color: black;
             text-decoration: none;
+          }
+        }
+        li.active{
+          a{
+            color: white;
           }
         }
       }

@@ -1,18 +1,12 @@
-let containers = Array.from(document.querySelectorAll('.container'));
-
-
 const scroll = function(){
-  window.addEventListener('scroll', (e) => {
-    let arr = containers.filter(el => el.getBoundingClientRect().y < el.clientHeight / 2)
-    // console.log(arr[arr.length-1])
-    resolve(arr[arr.length-1])
-  })
+  let containers = Array.from(document.querySelectorAll('.container'));
+  let arr = containers.filter(el => el.getBoundingClientRect().y < el.clientHeight / 2);
+  return resolve(arr)
 }
 
-function resolve(el){
-  return el
+function resolve(arr){
+  arr.shift();
+  return arr.pop().id
 }
-
-
 
 export {scroll}

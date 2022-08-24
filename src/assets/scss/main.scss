@@ -5,6 +5,7 @@
   margin: 0;
   list-style: none;
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 #app {
@@ -19,5 +20,11 @@ body {
 
 img {
   max-width: 100%;
+}
+
+
+.container.active {
+  background: rgb(146, 146, 199);
+  transition: all .3s ease-in-out;
 }
 
