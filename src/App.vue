@@ -4,12 +4,13 @@
   <header>
     <Header/>
   </header>
-
+    <h3>{{activeBlock}}</h3>
   <main>
-    <Promo id="first"/>
-    <Promo id="second"/>
+    <Promo id="home"/>
     <About id="about"/>
-    <Promo id="third"/>
+    <Promo id="experience"/>
+    <Promo id="work"/>
+    <Promo id="contact"/>
   </main>
 </template>
 
@@ -21,14 +22,14 @@ import About from './components/About.vue';
 export default {
   data(){
     return {
-
+      activeBlock: '',
     }
   },
   components:{
     Header,
     Promo,
     About
-  }
+  },
 }
 </script>
 

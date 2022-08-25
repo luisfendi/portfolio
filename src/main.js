@@ -1,7 +1,12 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 
-// import './assets/main.css'
-import './assets/scss/main.scss'
+import './assets/scss/main.scss';
+import './assets/js/activeLink';
 
-createApp(App).mount('#app')
+const app = createApp(App);
+// app.use(func)
+app.mount('#app');
+
+
+
